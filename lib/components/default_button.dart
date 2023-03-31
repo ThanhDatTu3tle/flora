@@ -4,11 +4,18 @@ import '../constants.dart';
 import '../size_config.dart';
 
 class DefaultButton extends StatelessWidget {
-  const DefaultButton({
+  DefaultButton({
     super.key, required this.text, required this.press,
   });
   final String text;
-  final Function press;
+  final VoidCallback press;
+
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    backgroundColor: kPrimaryColor,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +23,13 @@ class DefaultButton extends StatelessWidget {
       width: double.infinity,
       height: getProportionateScreenHeight(55),
       child: TextButton(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(kPrimaryColor),
-          overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-              if (states.contains(MaterialState.hovered)) {
-                return Colors.orange.withOpacity(0.04);
-              }
-              if (states.contains(MaterialState.focused) ||
-                  states.contains(MaterialState.pressed)) {
-                return Colors.orange.withOpacity(0.12);
-              }
-              return null; // Defer to the widget's default.
-            },
-          ),
-        ),
-        onPressed: press(),
+        style: flatButtonStyle,
+        onPressed: press,
         child: Text(
           text,
           style: TextStyle(
-            fontSize: getProportionateScreenWidth(22),
-            color: kPrimaryColor,
+            fontSize: getProportionateScreenWidth(18),
+            color: Colors.white,
           ),
         ),
       ),

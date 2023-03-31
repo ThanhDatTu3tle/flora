@@ -1,5 +1,6 @@
-import 'package:flora/routs.dart';
+import 'package:flora/routes.dart';
 import 'package:flora/screens/splash/splash_screen.dart';
+import 'package:flora/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,15 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        fontFamily: "Muli",
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(color: kTextColor),
-          bodyMedium: TextStyle(color: kTextColor),
-        ),
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme(),
       // home: SplashScreen(),
       initialRoute: SplashScreen.routeName,
       routes: routes,

@@ -19,12 +19,12 @@ class SplashContent extends StatelessWidget {
         Image.asset(
           image,
           width: getProportionateScreenWidth(300),
-          height: getProportionateScreenHeight(400),
+          height: getProportionateScreenHeight(350),
         ),
         Text(
           title,
           style: TextStyle(
-            fontSize: getProportionateScreenWidth(55),
+            fontSize: getProportionateScreenWidth(44),
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -32,7 +32,7 @@ class SplashContent extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            fontSize: getProportionateScreenWidth(18),
+            fontSize: getProportionateScreenWidth(13),
           ),
         ),
       ],

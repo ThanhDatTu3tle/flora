@@ -1,4 +1,5 @@
 import 'package:flora/constants.dart';
+import 'package:flora/screens/sign_in/sign_in_screen.dart';
 import 'package:flora/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +57,7 @@ class _BodyState extends State<Body> {
                   )
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                       child: Column(
@@ -72,7 +73,9 @@ class _BodyState extends State<Body> {
                           const Spacer(flex: 1),
                           DefaultButton(
                             text: 'Continue',
-                            press: () {},
+                            press: () {
+                              Navigator.pushNamed(context, SignInScreen.routeName);
+                            },
                           ),
                           const Spacer(),
                         ],
