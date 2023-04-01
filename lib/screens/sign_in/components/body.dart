@@ -18,8 +18,8 @@ class Body extends StatelessWidget {
             children: [
               Image.asset(
                 "assets/images/sign_in.png",
-                height: getProportionateScreenHeight(400),
-                width: getProportionateScreenWidth(500),
+                height: getProportionateScreenHeight(333),
+                width: getProportionateScreenWidth(555),
                 alignment: Alignment.center,
               ),
               const SignFom(),
@@ -68,14 +68,27 @@ class _SignFomState extends State<SignFom> {
             const Text(
               "Quên mật khẩu?",
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: kPrimaryColor,
               ),
+              textAlign: TextAlign.right,
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(10),
             ),
             DefaultButton(
               text: "Đăng nhập",
               press: () {},
+            ),
+            const Text(
+              "Bạn không có tài khoản?",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.normal,
+                color: kTextColor,
+              ),
+              textAlign: TextAlign.right,
             ),
           ],
         )
