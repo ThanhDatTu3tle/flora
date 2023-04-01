@@ -16,18 +16,15 @@ ThemeData theme() {
 
 InputDecorationTheme inputDecorationTheme() {
   const outlineInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(28)),
+    borderRadius: BorderRadius.all(Radius.circular(33)),
     borderSide: BorderSide(color: kTextColor),
-    gapPadding: 10,
+    gapPadding: 5,
   );
 
   return const InputDecorationTheme(
-    // labelText: "Email",
-    // hintText: "Enter your email",
-    // floatingLabelBehavior: FloatingLabelBehavior.always,
     contentPadding: EdgeInsets.symmetric(
-      horizontal: 42,
-      vertical: 20,
+      horizontal: 30,
+      vertical: 10,
     ),
     border: outlineInputBorder,
     focusedBorder: outlineInputBorder,
