@@ -15,7 +15,7 @@ class SignInScreen extends StatelessWidget {
         title: const Text(
           "Đăng nhập",
           style: TextStyle(
-            fontSize: 28,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
             color: kPrimaryColor,
           ),

@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  font_awesome_flutter: ^10.4.0
   flutter:
     sdk: flutter
 
@@ -38,6 +39,7 @@ dependencies:
   url_launcher: ^6.1.10
   provider: ^6.0.5
   flutter_svg: ^2.0.4
+  vector_graphics_compiler: ^1.1.4
 
 dev_dependencies:
   flutter_test:
