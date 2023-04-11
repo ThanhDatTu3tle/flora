@@ -1,5 +1,7 @@
 import 'package:flora/components/default_button.dart';
 import 'package:flora/components/form_error_email.dart';
+import 'package:flora/screens/sign_in/sign_in_screen.dart';
+import 'package:flora/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -138,8 +140,8 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                     ),
                   ),
                   GestureDetector(
-                    // onTap: () => Navigator.popAndPushNamed(
-                        // context, ForgotPasswordScreen.routeName),
+                    onTap: () => Navigator.popAndPushNamed(
+                        context, SignUpScreen.routeName),
                     child: const Text(
                       "Đăng ký",
                       style: TextStyle(

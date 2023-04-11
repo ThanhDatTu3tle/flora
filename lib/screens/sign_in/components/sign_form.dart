@@ -1,6 +1,8 @@
 import 'package:flora/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flora/screens/login_success/login_success_screen.dart';
+import 'package:flora/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+
 import '../../../components/default_button.dart';
 import '../../../components/form_error_email.dart';
 import '../../../components/form_error_password.dart';
@@ -23,6 +25,36 @@ class _SignFormState extends State<SignForm> {
   final List<String> emailErrors = [];
   final List<String> passwordErrors = [];
 
+  void addEmailError({required String emailError}) {
+    if (!emailErrors.contains(emailError)) {
+      setState(() {
+        emailErrors.add(emailError);
+      });
+    }
+  }
+  void addPasswordError({required String passwordError}) {
+    if (!passwordErrors.contains(passwordError)) {
+      setState(() {
+        passwordErrors.add(passwordError);
+      });
+    }
+  }
+
+  void removeEmailError({required String emailError}) {
+    if (!emailErrors.contains(emailError)) {
+      setState(() {
+        emailErrors.remove(emailError);
+      });
+    }
+  }
+  void removePasswordError({required String passwordError}) {
+    if (!passwordErrors.contains(passwordError)) {
+      setState(() {
+        passwordErrors.remove(passwordError);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     MainAxisAlignment mainAxisAlignment;
@@ -36,28 +68,20 @@ class _SignFormState extends State<SignForm> {
               keyboardType: TextInputType.emailAddress,
               onSaved: (newValue) => email = newValue!,
               onChanged: (value) {
-                if (value.isEmpty && emailErrors.contains(kEmailNullError)) {
-                  setState(() {
-                    emailErrors.remove(kEmailNullError);
-                  });
-                } else if (emailValidatorRegExp.hasMatch(value) && emailErrors.contains(kInvalidEmailError)) {
-                  setState(() {
-                    emailErrors.remove(kInvalidEmailError);
-                  });
+                if (value.isNotEmpty) {
+                  removeEmailError(emailError: kEmailNullError);
+                } else if (emailValidatorRegExp.hasMatch(value)) {
+                  removeEmailError(emailError: kInvalidEmailError);
                 }
                 return;
               },
               validator: (value) {
-                if (value!.isEmpty && !emailErrors.contains(kEmailNullError)) {
-                  setState(() {
-                    emailErrors.add(kEmailNullError);
-                  });
-                  // return "";
-                } else if (!emailValidatorRegExp.hasMatch(value) && !emailErrors.contains(kInvalidEmailError)) {
-                  setState(() {
-                    emailErrors.add(kInvalidEmailError);
-                  });
-                  // return "";
+                if (value!.isEmpty) {
+                  addEmailError(emailError: kEmailNullError);
+                  return "";
+                } else if (!emailValidatorRegExp.hasMatch(value)) {
+                  addEmailError(emailError: kInvalidEmailError);
+                  return "";
                 }
                 return null;
               },
@@ -90,28 +114,20 @@ class _SignFormState extends State<SignForm> {
               obscureText: true,
               onSaved: (newValue) => password = newValue!,
               onChanged: (value) {
-                if (value.isEmpty && passwordErrors.contains(kPassNullError)) {
-                  setState(() {
-                    passwordErrors.remove(kPassNullError);
-                  });
-                } else if (value.length >= 8 && passwordErrors.contains(kShortPassError)) {
-                  setState(() {
-                    passwordErrors.remove(kShortPassError);
-                  });
+                if (value.isNotEmpty) {
+                  removePasswordError(passwordError: kPassNullError);
+                } else if (value.length >= 8) {
+                  removePasswordError(passwordError: kShortPassError);
                 }
                 return;
               },
               validator: (value) {
-                if (value!.isEmpty && !passwordErrors.contains(kPassNullError)) {
-                  setState(() {
-                    passwordErrors.add(kPassNullError);
-                  });
-                  // return "";
-                } else if (value.length < 8 && !passwordErrors.contains(kShortPassError)) {
-                  setState(() {
-                    passwordErrors.add(kShortPassError);
-                  });
-                  // return "";
+                if (value!.isEmpty) {
+                  addPasswordError(passwordError: kPassNullError);
+                  return "";
+                } else if (value.length < 8) {
+                  addPasswordError(passwordError: kShortPassError);
+                  return "";
                 }
                 return null;
               },
@@ -195,8 +211,8 @@ class _SignFormState extends State<SignForm> {
                   ),
                 ),
                 GestureDetector(
-                  // onTap: () => Navigator.popAndPushNamed(
-                      // context, ForgotPasswordScreen.routeName),
+                  onTap: () => Navigator.popAndPushNamed(
+                      context, SignUpScreen.routeName),
                   child: const Text(
                     "Đăng ký",
                     style: TextStyle(
