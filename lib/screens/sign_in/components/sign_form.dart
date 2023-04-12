@@ -155,22 +155,6 @@ class _SignFormState extends State<SignForm> {
             Row(
               // mainAxisAlignment: mainAxisAlignment = MainAxisAlignment.center,
               children:  [
-                Checkbox(
-                  value: remember,
-                  activeColor: kPrimaryColor,
-                  onChanged: (value) {
-                    setState(() {
-                      remember = value!;
-                    });
-                  },
-                ),
-                const Text(
-                  "Ghi nhớ đăng nhập?",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
                 const Spacer(),
                 GestureDetector(
                   onTap: () => Navigator.popAndPushNamed(
@@ -189,11 +173,11 @@ class _SignFormState extends State<SignForm> {
             DefaultButton(
               text: "Đăng nhập",
               press: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState?.save();
-
-                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-                }
+                // if (_formKey.currentState!.validate()) {
+                //   _formKey.currentState?.save();
+                //
+                //   Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                // }
               },
             ),
             SizedBox(
