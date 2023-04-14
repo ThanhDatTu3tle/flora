@@ -1,3 +1,4 @@
+import 'package:flora/screens/otp/otp_screen.dart';
 import 'package:flora/screens/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -277,7 +278,7 @@ class _SignUpFormState extends State<SignUpForm> {
             validator: (value) {
               if (value!.isEmpty) {
                 // return "";
-              } else if (password != conform_password) {
+              } else if (password != value) {
                 addConformPasswordError(conformPasswordError: kMatchPassError);
                 // return "";
               }
@@ -336,7 +337,7 @@ class _SignUpFormState extends State<SignUpForm> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState?.save();
 
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                Navigator.pushNamed(context, OtpScreen.routeName);
               }
             },
           ),
