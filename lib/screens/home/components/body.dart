@@ -25,7 +25,7 @@ class Body extends StatelessWidget {
               child: Row(
                 children: [
                   SpecialOfferCard(
-                    image: "assets/images/banner_1.png",
+                    image: "assets/images/banner_2.png",
                     press: () {  },
                   ),
                   SpecialOfferCard(
@@ -33,7 +33,7 @@ class Body extends StatelessWidget {
                     press: () {  },
                   ),
                   SpecialOfferCard(
-                    image: "assets/images/banner_1.png",
+                    image: "assets/images/banner_3.png",
                     press: () {  },
                   ),
                   SizedBox(width: getProportionateScreenWidth(20),)
@@ -57,7 +57,7 @@ class Body extends StatelessWidget {
                       color: kPrimaryColor,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Xem tất cả",
                     style: TextStyle(
                       color: kPrimaryColor,
