@@ -40,6 +40,7 @@ dependencies:
   provider: ^6.0.5
   flutter_svg: ^2.0.4
   vector_graphics_compiler: ^1.1.4
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
