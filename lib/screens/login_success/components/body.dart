@@ -1,3 +1,4 @@
+import 'package:flora/screens/home/home_screen.dart';
 import 'package:flora/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class Body extends StatelessWidget {
                       width: SizeConfig.screenWidth! * 0.6,
                       child: DefaultButton(
                         text: "Tiếp tục",
-                        press: () {},
+                        press: () => Navigator.pushNamed(context, HomeScreen.routeName),
                       ),
                     ),
                   ],

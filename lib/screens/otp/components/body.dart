@@ -1,4 +1,3 @@
-import 'package:flora/components/default_button.dart';
 import 'package:flora/constants.dart';
 import 'package:flora/size_config.dart';
 import 'package:flutter/material.dart';
@@ -25,10 +24,10 @@ class Body extends StatelessWidget {
               SizedBox(height: SizeConfig.screenHeight! * 0.1),
               GestureDetector(
                   onTap: () {
-
+                    // login_success
                   },
                   child: const Text(
-                    "Vui lòng gửi lại OTP bạn vừa nhập mà",
+                    "Vui lòng gửi lại mã OTP",
                     style: TextStyle(decoration: TextDecoration.underline),
                   )
               ),

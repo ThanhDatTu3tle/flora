@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../size_config.dart';
 
@@ -21,7 +22,7 @@ class SocialCard extends StatelessWidget {
           color: Color(0xFFF5F6F9),
           shape: BoxShape.circle,
         ),
-        child: Image.asset(
+        child: SvgPicture.asset(
           icon,
           alignment: Alignment.center,
         )

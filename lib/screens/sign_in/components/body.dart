@@ -26,12 +26,12 @@ class Body extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SocialCard(
-                    icon: "assets/icons/facebook.png",
+                    icon: "assets/icons/facebook.svg",
                     press: () { },
                   ),
 
                   SocialCard(
-                    icon: "assets/icons/google.png",
+                    icon: "assets/icons/google.svg",
                     press: () { },
                   ),
                 ],
