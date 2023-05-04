@@ -1,32 +1,27 @@
-import 'dart:convert';
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-
 class Flower {
   final String name, image;
   final List<String> description;
   final double price;
-  final bool favorite;
 
   Flower({
   required this.name,
   required this.description,
   required this.image,
   required this.price,
-  this.favorite = false,
   });
 
-  factory Flower.fromJson(List<Flower> json) {
-    return Flower(
-        name: 'name',
-        description: ['description'],
-        image: 'image',
-        price: 0,
-        favorite: false,
-    );
-  }
+  // Flower.fromJson(Map<String, dynamic> json, this.name, this.image, this.description, this.price) {
+  //   name = json['name'];
+  //   description = json['description'];
+  //   image = json['image'];
+  //   price = json['price'];
+  // }
+  //
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> date = new Map<String, dynamic>();
+  //   data['name'] = this.name;
+  // }
+
 }
 
 List<Flower> hardFlowers = [
@@ -37,7 +32,6 @@ List<Flower> hardFlowers = [
 
     ],
     price: 250.000,
-    favorite: false,
   ),
   Flower(
     image: "assets/images/HongTrang.png",
@@ -46,7 +40,6 @@ List<Flower> hardFlowers = [
 
     ],
     price: 320.000,
-    favorite: false,
   ),
   Flower(
     image: "assets/images/CucTrang.png",
@@ -55,6 +48,5 @@ List<Flower> hardFlowers = [
 
     ],
     price: 150.000,
-    favorite: false,
   )
 ];
