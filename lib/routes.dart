@@ -1,3 +1,4 @@
+import 'package:flora/models/Flower.dart';
 import 'package:flora/screens/details/details_screen.dart';
 import 'package:flora/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flora/screens/home/home_screen.dart';
@@ -23,5 +24,5 @@ final Map<String, WidgetBuilder> routes = {
 
   HomeScreen.routeName: (context) => const HomeScreen(),
 
-  DetailsScreen.routeName: (context) => const DetailsScreen(),
+  // DetailsScreen.routeName: (context) => const DetailsScreen(flowerModel: FlowerModel,),
 };

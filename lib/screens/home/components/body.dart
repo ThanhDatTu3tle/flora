@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flora/constants.dart';
 import 'package:flora/models/Flower.dart';
 import 'package:flora/screens/home/components/popular_product.dart';
@@ -15,9 +13,6 @@ import 'icon_btn_with_counter.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +76,9 @@ class Body extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  ...List.generate(
-                    hardFlowers.length,
-                        (index) => ProductCard(
-                      flower: hardFlowers[index],
-                    ),
-                  ),
+                  // Image.network(
+                  //   FlowerModel.image!
+                  // ),
                   SizedBox(width: getProportionateScreenWidth(20),)
                 ],
               ),
@@ -108,7 +100,7 @@ class ProductCard extends StatelessWidget {
   });
 
   final double width, aspectRetion;
-  final Flower flower;
+  final FlowerModel flower;
 
   @override
   Widget build(BuildContext context) {
@@ -129,15 +121,15 @@ class ProductCard extends StatelessWidget {
                   child: Image.asset((flower.image).toString()),
                 ),
               ),
-              Text(
-                flower.name,
-                style: TextStyle(
-                  fontSize: getProportionateScreenWidth(20),
-                  fontWeight: FontWeight.w600,
-                  color: kPrimaryColor,
-                ),
-                maxLines: 3,
-              ),
+              // Text(
+              //   flower.name,
+              //   style: TextStyle(
+              //     fontSize: getProportionateScreenWidth(20),
+              //     fontWeight: FontWeight.w600,
+              //     color: kPrimaryColor,
+              //   ),
+              //   maxLines: 3,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -172,8 +164,6 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-
-
 
 
 

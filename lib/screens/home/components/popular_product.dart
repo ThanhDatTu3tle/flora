@@ -1,8 +1,6 @@
-import 'dart:convert';
-import 'dart:ffi';
-
+import 'package:flora/data/data.dart';
+import 'package:flora/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import '../../../constants.dart';
 import '../../../models/Flower.dart';
@@ -16,73 +14,84 @@ class SpecialProduct extends StatefulWidget {
 }
 
 class _SpecialProductState extends State<SpecialProduct> {
-  // Map<Array, dynamic> flowers = [] as Map<Array<NativeType>, dynamic>;
-  List<Flower> flowers = [];
+  List<FlowerModel> flowers = [];
+  Future<String> loadList() async {
+    flowers = await ReadData().loadDataList();
+    return '';
+  }
 
-  // Future<Flower> fetchFlowers() async {
-  //   final response = await http.get(Uri.parse('https://odd-jade-adder-vest.cyclic.app/category/63d133ab7abbc1799c72eeb4'));
-  //   if (response.statusCode == 200) {
-  //     return Flower.fromJson(jsonDecode(response.body));
-  //   } else {
-  //     throw Exception('Failed to load user data');
-  //   }
-  // }
-
-  void fetchFlowers() async {
-    const url = 'https://odd-jade-adder-vest.cyclic.app/category/63d133ab7abbc1799c72eeb4';
-    final uri = Uri.parse(url);
-    final respone = await http.get(uri);
-    final body = respone.body;
-    final json = jsonDecode(body);
-    setState(() {
-      flowers = json["category"];
-    });
+  @override
+  void initState() {
+    super.initState();
+    loadList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // SizedBox(
-        //   width: getProportionateScreenWidth(200),
-        //   child: AspectRatio(
-        //     aspectRatio: 1.02,
-        //     child: Container(
-        //       decoration: BoxDecoration(
-        //         color: kSecondaryColor.withOpacity(0.1),
-        //         borderRadius: BorderRadius.circular(15),
-        //       ),
-        //       child: Image.asset(flowers[0].image[0]),
-        //     ),
-        //   ),
-        // ),
-        // ListView.builder(
-        //   itemCount: flowers.length,
-        //   itemBuilder: (context, index) {
-        //     final flower = flowers[index];
-        //     final image = flower['name'];
-        //
-        //     return Image.asset(image);
-        //   },
-        // ),
-        // FutureBuilder<Flower>(
-        //   future: fetchFlowers(),
-        //   builder: (context, snapshot) {
-        //     if (snapshot.hasData) {
-        //       return Text(snapshot.data!.name);
-        //     } else if (snapshot.hasError) {
-        //       return Text('${snapshot.error}');
-        //     }
-        //     return const CircularProgressIndicator();
-        //   },
-        // ),
+        SizedBox(
+          width: getProportionateScreenWidth(200),
+          child: AspectRatio(
+            aspectRatio: 1.02,
+            child: Container(
+              decoration: BoxDecoration(
+                color: kSecondaryColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Image.asset(flowers[0].image!),
+            ),
+          ),
+        ),
+        ListView.builder(
+          itemCount: flowers.length,
+          itemBuilder: (context, index) {
+            final flower = flowers[index];
+            final image = flower.image;
+
+            return Image.asset(image!);
+          },
+        ),
+        FutureBuilder(
+          future: loadList(),
+          builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+            return Center(
+              child: Column(
+                children: [
+                  const Text(
+                    "Card product",
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 30,
+                    ),
+                    
+                  ),
+                  Expanded(child: ListView.builder(itemBuilder: (context, index) {
+                    return itemListView(flowers[index]);
+                  }))
+                ],
+              ),
+            );
+          },
+        ),
       ],
     );
   }
 
-  // https://randomuser.me/api/?results=3
-
-
-
-
+  Widget itemListView(FlowerModel flowerModel) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context as BuildContext,
+            MaterialPageRoute(
+                builder: (context) => DetailsScreen(
+                  flowerModel: flowerModel,
+                )
+            )
+        );
+      },
+    );
+  }
 }
+
+
