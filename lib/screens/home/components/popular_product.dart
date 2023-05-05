@@ -82,7 +82,7 @@ class _SpecialProductState extends State<SpecialProduct> {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context as BuildContext,
+            context,
             MaterialPageRoute(
                 builder: (context) => DetailsScreen(
                   flowerModel: flowerModel,
