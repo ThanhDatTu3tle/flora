@@ -17,11 +17,11 @@ class ReadData {
     return (dataJson as List).map((e) => CategoryModel.fromJson(e)).toList();
   }
 
-  Future<List<FlowerModel>> loadDataList() async {
+  Future<List<Flower>> loadDataList() async {
     var data = await Dio().get(baseApiGetFlowerList);
 
     var dataJson = jsonDecode(data.data.toString().replaceAll('" "', '","'));
 
-    return (dataJson as List).map((e) => FlowerModel.fromJson(e)).toList();
+    return (dataJson as List).map((e) => Flower.fromJson(e)).toList();
   }
 }

@@ -1,60 +1,39 @@
-class FlowerModel {
+class Flower {
   String? id;
   String? name;
   String? image;
   String? description;
   int? price;
+  bool? favorite;
 
-  FlowerModel({
+  Flower({
+    this.id,
     this.name,
-    this.description,
     this.image,
+    this.description,
     this.price,
+    this.favorite,
   });
 
-  FlowerModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    image = json['image'];
-    price = json['price'];
+  factory Flower.fromJson(Map<String, dynamic> json) {
+    return Flower(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      image: json['image'] as String?,
+      description: json['description'] as String,
+      price: json['price'] as int,
+      favorite: json['favorite'] as bool,
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['description'] = this.description;
-    data['image'] = this.image;
-    data['price'] = this.price;
-
-    return data;
+    return {
+      'id': id,
+      'name': name,
+      'image': image,
+      'description': description,
+      'price': price,
+      'favorite': favorite,
+    };
   }
 }
-
-// List<Flower> hardFlowers = [
-//   Flower(
-//     image: "assets/images/daisy.png",
-//     name: "Daisy",
-//     description: [
-//
-//     ],
-//     price: 250.000,
-//   ),
-//   Flower(
-//     image: "assets/images/HongTrang.png",
-//     name: "Hồng trắng",
-//     description: [
-//
-//     ],
-//     price: 320.000,
-//   ),
-//   Flower(
-//     image: "assets/images/CucTrang.png",
-//     name: "Cúc trắng",
-//     description: [
-//
-//     ],
-//     price: 150.000,
-//   )
-// ];

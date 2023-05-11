@@ -2,9 +2,9 @@ import 'package:flora/models/Flower.dart';
 import 'package:flutter/widgets.dart';
 
 class FlowersVM with ChangeNotifier {
-  List<FlowerModel> lst = [];
+  List<Flower> lst = [];
 
-  add(FlowerModel mo) {
+  add(Flower mo) {
     lst.add(mo);
     notifyListeners();
   }

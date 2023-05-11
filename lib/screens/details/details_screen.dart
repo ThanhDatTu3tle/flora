@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class DetailsScreen extends StatelessWidget {
   static String routeName = "/details";
 
-  const DetailsScreen({Key? key, required FlowerModel flowerModel}) : super(key: key);
+  const DetailsScreen({Key? key, required Flower flowerModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class DetailsScreen extends StatelessWidget {
 }
 
 class FlowerDetailsArguments {
-  final FlowerModel product;
+  final Flower product;
 
   FlowerDetailsArguments({required this.product});
 }
