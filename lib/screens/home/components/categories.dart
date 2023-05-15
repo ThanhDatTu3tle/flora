@@ -1,4 +1,7 @@
 import 'package:flora/screens/card/card_screen.dart';
+import 'package:flora/screens/flower/flower_screen.dart';
+import 'package:flora/screens/gift/gift_screen.dart';
+import 'package:flora/screens/plant/plant_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -7,12 +10,11 @@ import '../../../size_config.dart';
 class Categories extends StatelessWidget {
   Categories({Key? key}) : super(key: key);
 
-  // Danh sách các màn hình danh mục tương ứng
   final List<Widget> categoryScreens = [
     const CardScreen(),
-    // Category2Screen(),
-    // Category3Screen(),
-    // Category4Screen(),
+    const PlantScreen(),
+    const GiftScreen(),
+    const FlowerScreen(),
   ];
 
   @override
@@ -57,7 +59,6 @@ class Categories extends StatelessWidget {
                     image: categories[index]["image"],
                     text: categories[index]["text"],
                     press: () {
-                      // Chuyển hướng đến màn hình danh mục tương ứng
                       Navigator.push(
                         context,
                         MaterialPageRoute(

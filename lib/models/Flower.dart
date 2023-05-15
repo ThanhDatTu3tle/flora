@@ -20,7 +20,7 @@ class Flower {
       id: json['_id'] as String ?? '',
       name: json['name'] as String ?? '',
       image: json['image'] as String,
-      // description: json['description'] as String,
+      description: json['description'] as String ?? '',
       price: json['price'] as int,
       favorite: json['favorite'] as bool,
     );
