@@ -1,6 +1,5 @@
 import 'package:flora/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flora/screens/home/home_screen.dart';
-import 'package:flora/screens/login_success/login_success_screen.dart';
 import 'package:flora/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 

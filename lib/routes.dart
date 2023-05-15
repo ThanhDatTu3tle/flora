@@ -1,4 +1,5 @@
 import 'package:flora/models/Flower.dart';
+import 'package:flora/screens/card/card_screen.dart';
 import 'package:flora/screens/details/details_screen.dart';
 import 'package:flora/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flora/screens/home/home_screen.dart';
@@ -7,6 +8,7 @@ import 'package:flora/screens/otp/otp_screen.dart';
 import 'package:flora/screens/sign_in/sign_in_screen.dart';
 import 'package:flora/screens/sign_up/sign_up_screen.dart';
 import 'package:flora/screens/splash/splash_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -25,4 +27,6 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => const HomeScreen(),
 
   // DetailsScreen.routeName: (context) => const DetailsScreen(flowerModel: FlowerModel,),
+
+  CardScreen.routeName: (context) => const CardScreen(),
 };

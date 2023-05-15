@@ -1,4 +1,3 @@
-import 'package:flora/screens/home/components/section_title.dart';
 import 'package:flutter/material.dart';
 
 import '../../../size_config.dart';
