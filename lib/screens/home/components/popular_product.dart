@@ -17,7 +17,7 @@ class SpecialProduct extends StatelessWidget {
 
   Future<List<Flower>> fetchDataFlower() async {
     try {
-      final response = await http.get(Uri.parse("http://169.254.185.208:5000/product"));
+      final response = await http.get(Uri.parse("http://169.254.185.208:5000/popular"));
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
         List<Flower> flowers = List<Flower>.from(
@@ -59,7 +59,7 @@ class SpecialProduct extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: getProportionateScreenWidth(20)),
+        SizedBox(height: getProportionateScreenWidth(10)),
         FutureBuilder<List<Flower>>(
           future: fetchDataFlower(),
           builder: (context, snapshot) {

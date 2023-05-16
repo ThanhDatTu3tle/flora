@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flora/models/Flower.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +40,7 @@ class DetailsScreen extends StatelessWidget {
                 width: getProportionateScreenWidth(600),
                 alignment: Alignment.center,
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +65,7 @@ class DetailsScreen extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 20),
                       Text(
                         "Giới thiệu",
                         style: TextStyle(
@@ -120,23 +118,29 @@ class DetailsScreen extends StatelessWidget {
 
               SizedBox(
                 width: getProportionateScreenWidth(333),
-                child: Text(
-                  "${flower!.description}",
-                  style: TextStyle(
-                    fontSize: getProportionateScreenWidth(15),
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
+                child: SingleChildScrollView(
+                  child: Text(
+                    "${flower!.description}",
+                    style: TextStyle(
+                      fontSize: getProportionateScreenWidth(15),
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                    maxLines: 7,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 7,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-              const SizedBox(height: 60),
-              DefaultButton(
-                text: "Đặt hàng",
-                press: () {
+              const SizedBox(height: 30),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: DefaultButton(
+                    text: "Đặt hàng",
+                    press: () {
 
-                },
+                    },
+                  ),
+                ),
               ),
             ],
           ),

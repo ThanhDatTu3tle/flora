@@ -21,7 +21,7 @@ class _BodyState extends State<Body> {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(20)),
+            horizontal: getProportionateScreenWidth(20)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -52,7 +52,11 @@ class _BodyState extends State<Body> {
             ),
           ),
           SizedBox(height: getProportionateScreenWidth(20)),
-          Expanded(child: ListProduct())
+          Expanded(
+            child: SingleChildScrollView(
+              child: ListProduct(),
+            ),
+          ),
         ],
       ),
     );

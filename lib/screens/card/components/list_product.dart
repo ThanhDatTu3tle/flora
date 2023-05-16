@@ -15,7 +15,7 @@ class ListProduct extends StatelessWidget {
 
   Future<List<Flower>> fetchDataFlower() async {
     try {
-      final response = await http.get(Uri.parse("http://169.254.185.208:5000/product"));
+      final response = await http.get(Uri.parse("http://169.254.185.208:5000/card"));
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
         List<Flower> flowers = List<Flower>.from(

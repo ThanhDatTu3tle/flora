@@ -18,6 +18,7 @@ class ListProduct extends StatelessWidget {
       final response = await http.get(Uri.parse("http://169.254.185.208:5000/product"));
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
+        print(response.body);
         List<Flower> flowers = List<Flower>.from(
             jsonData.map((flower) => Flower.fromJson(flower)));
         return flowers;

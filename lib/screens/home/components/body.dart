@@ -20,13 +20,12 @@ class _BodyState extends State<Body> {
       child: Column(
         children: [
           const SpecialOffers(), // SpecialOffers
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           Categories(), // Categories
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           Expanded(
             child: SpecialProduct(), // SpecialProduct
           ),
-          const SizedBox(height: 20),
           BottomNavigationBar(
             currentIndex: _selectedIndex,
             unselectedItemColor: Colors.grey,

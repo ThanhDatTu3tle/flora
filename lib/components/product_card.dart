@@ -46,7 +46,7 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               // Text(
               //   product.title,
               //   style: TextStyle(color: Colors.black),
@@ -63,7 +63,7 @@ class ProductCard extends StatelessWidget {
                       Text(
                         "${flower!.name}",
                         style: TextStyle(
-                          fontSize: getProportionateScreenWidth(18),
+                          fontSize: getProportionateScreenWidth(16),
                           fontWeight: FontWeight.w600,
                           color: kPrimaryColor,
                         ),
@@ -71,7 +71,7 @@ class ProductCard extends StatelessWidget {
                       Text(
                         formatCurrency("${flower!.price}"),
                         style: TextStyle(
-                          fontSize: getProportionateScreenWidth(16),
+                          fontSize: getProportionateScreenWidth(14),
                           fontWeight: FontWeight.w500,
                           color: Colors.black,
                         ),

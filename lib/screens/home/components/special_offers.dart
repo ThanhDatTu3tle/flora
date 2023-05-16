@@ -13,7 +13,7 @@ class SpecialOffers extends StatelessWidget {
     return Column(
       children: [
         const HomeHeader(), // HomeHeader
-        const SizedBox(height: 20),
+        const SizedBox(height: 5),
         SingleChildScrollView( // SpecialOffer
           scrollDirection: Axis.horizontal,
           child: Row(
