@@ -1,6 +1,8 @@
 import 'package:flora/models/Flower.dart';
 import 'package:flora/screens/card/card_screen.dart';
+import 'package:flora/screens/cart/cart_screen.dart';
 import 'package:flora/screens/details/details_screen.dart';
+import 'package:flora/screens/favorite/favorite_screen.dart';
 import 'package:flora/screens/flower/flower_screen.dart';
 import 'package:flora/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flora/screens/gift/gift_screen.dart';
@@ -29,7 +31,7 @@ final Map<String, WidgetBuilder> routes = {
 
   HomeScreen.routeName: (context) => const HomeScreen(),
 
-  DetailsScreen.routeName: (context) => DetailsScreen(flowerModel: Flower()),
+  DetailsScreen.routeName: (context) => DetailsScreen(flower: Flower()),
 
   CardScreen.routeName: (context) => const CardScreen(),
 
@@ -38,4 +40,8 @@ final Map<String, WidgetBuilder> routes = {
   GiftScreen.routeName: (context) => const GiftScreen(),
 
   FlowerScreen.routeName: (context) => const FlowerScreen(),
+
+  FavoriteScreen.routeName: (context) => const FavoriteScreen(),
+
+  CartScreen.routeName: (context) => const CartScreen(),
 };

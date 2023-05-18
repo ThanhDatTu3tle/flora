@@ -1,39 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../models/Flower.dart';
 import '../screens/details/details_screen.dart';
-import '../screens/home/components/icon_btn_with_counter.dart';
 import '../size_config.dart';
+import 'favorite_provider.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({
     Key? key,
-    this.width = 140,
-    this.aspectRetion = 0,
+    this.width = 100,
+    this.aspectRatio = 1,
     this.flower,
   }) : super(key: key);
 
-  final double width, aspectRetion;
+  final double width, aspectRatio;
   final Flower? flower;
+
+  @override
+  _ProductCardState createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20), right: getProportionateScreenWidth(20)),
+      padding: EdgeInsets.only(
+        left: getProportionateScreenWidth(20),
+        right: getProportionateScreenWidth(20),
+      ),
       child: SizedBox(
-        width: getProportionateScreenWidth(width),
+        width: getProportionateScreenWidth(widget.width),
         child: GestureDetector(
-          onTap: () => Navigator.pushNamed(
-            context,
-            DetailsScreen.routeName,
-            arguments: FlowerDetailsArguments(flower: flower!),
-          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsScreen(flower: widget.flower),
+              ),
+            );
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AspectRatio(
-                aspectRatio: 1.02,
+                aspectRatio: widget.aspectRatio,
                 child: Container(
                   padding: EdgeInsets.all(getProportionateScreenWidth(20)),
                   decoration: BoxDecoration(
@@ -41,17 +55,12 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Hero(
-                    tag: flower!.id.toString(),
-                    child: Image.network(flower!.image!),
+                    tag: widget.flower!.id.toString(),
+                    child: Image.network(widget.flower!.image!),
                   ),
                 ),
               ),
               const SizedBox(height: 5),
-              // Text(
-              //   product.title,
-              //   style: TextStyle(color: Colors.black),
-              //   maxLines: 2,
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +70,7 @@ class ProductCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${flower!.name}",
+                        "${widget.flower!.name}",
                         style: TextStyle(
                           fontSize: getProportionateScreenWidth(16),
                           fontWeight: FontWeight.w600,
@@ -69,7 +78,7 @@ class ProductCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        formatCurrency("${flower!.price}"),
+                        formatCurrency("${widget.flower!.price}"),
                         style: TextStyle(
                           fontSize: getProportionateScreenWidth(14),
                           fontWeight: FontWeight.w500,
@@ -78,29 +87,39 @@ class ProductCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // InkWell(
-                        //   borderRadius: BorderRadius.circular(22),
-                        //   onTap: () {},
-                        //   child: Container(
-                        //     padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                        //     height: getProportionateScreenWidth(18),
-                        //     width: getProportionateScreenWidth(18),
-                        //     decoration: BoxDecoration(
-                        //       color: flower!.favorite!
-                        //           ? kPrimaryColor.withOpacity(0.15)
-                        //           : kSecondaryColor.withOpacity(0.1),
-                        //       ),
-                        //     ),
-                        //   ),
-                        IconBthWithCounter(
-                          svgSrc: "assets/icons/Heart.svg",
-                          press: () { },
-                        ),
-                      ])
+                  InkWell(
+                    borderRadius: BorderRadius.circular(50),
+                    onTap: () {
+                      setState(() {
+                        isFavorite = !isFavorite;
+                      });
+                      // Thêm phần xử lý truyền sản phẩm vào danh sách yêu thích
+                      if (isFavorite) {
+                        Provider.of<FavoriteProvider>(context, listen: false)
+                            .addToFavorite(widget.flower!);
+                      } else {
+                        Provider.of<FavoriteProvider>(context, listen: false)
+                            .removeFromFavorite(widget.flower!);
+                      }
+                    },
+                    child: Container(
+                      padding:
+                      EdgeInsets.all(getProportionateScreenWidth(4)),
+                      height: getProportionateScreenWidth(28),
+                      width: getProportionateScreenWidth(28),
+                      decoration: BoxDecoration(
+                        color: isFavorite
+                            ? kPrimaryColor.withOpacity(0.15)
+                            : kSecondaryColor.withOpacity(0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.favorite,
+                        color: isFavorite ? kPrimaryColor : Colors.grey,
+                        size: getProportionateScreenWidth(20),
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],
@@ -108,6 +127,7 @@ class ProductCard extends StatelessWidget {
         ),
       ),
     );
+
   }
 }
 

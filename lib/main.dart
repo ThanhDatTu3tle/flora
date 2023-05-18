@@ -2,10 +2,27 @@ import 'package:flora/routes.dart';
 import 'package:flora/screens/splash/splash_screen.dart';
 import 'package:flora/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'components/cart_provider.dart';
+import 'components/favorite_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<FavoriteProvider>(
+          create: (context) => FavoriteProvider(),
+        ),
+        ChangeNotifierProvider<CartProvider>(
+          create: (context) => CartProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
