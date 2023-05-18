@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/cart_provider.dart';
@@ -22,13 +23,6 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-  // late Flower flower;
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   flower = widget.flower!;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +90,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 GestureDetector(
                   onTap: () {
                     cartProvider.addToCart(widget.flower!);
+                    showToast("Thêm vào giỏ hàng");
                   },
                   child: Icon(
                     Icons.shopping_cart_outlined,
@@ -144,4 +139,16 @@ class FlowerDetailsArguments {
 String formatCurrency(String numberString) {
   final regex = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
   return '${numberString.replaceAllMapped(regex, (match) => '${match[1]}.')}đ';
+}
+
+void showToast(String message) {
+  Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.TOP,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.green.shade200,
+    textColor: Colors.green,
+    fontSize: 18.0,
+  );
 }

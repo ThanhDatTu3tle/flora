@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
@@ -93,13 +94,16 @@ class _ProductCardState extends State<ProductCard> {
                       setState(() {
                         isFavorite = !isFavorite;
                       });
+
                       // Thêm phần xử lý truyền sản phẩm vào danh sách yêu thích
                       if (isFavorite) {
                         Provider.of<FavoriteProvider>(context, listen: false)
                             .addToFavorite(widget.flower!);
+                        showToast("Thêm vào Yêu thích");
                       } else {
                         Provider.of<FavoriteProvider>(context, listen: false)
                             .removeFromFavorite(widget.flower!);
+                        cancelToast("Xóa khỏi Yêu thích");
                       }
                     },
                     child: Container(
@@ -135,3 +139,27 @@ String formatCurrency(String numberString) {
   final regex = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
   return '${numberString.replaceAllMapped(regex, (match) => '${match[1]}.')}' 'đ';
 }
+
+void showToast(String message) {
+  Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.TOP,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.green.shade200,
+    textColor: Colors.green,
+    fontSize: 18.0,
+  );
+}
+
+  void cancelToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.TOP,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red.shade200,
+      textColor: Colors.red,
+      fontSize: 18.0,
+    );
+  }
