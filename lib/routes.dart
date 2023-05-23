@@ -13,6 +13,7 @@ import 'package:flora/screens/plant/plant_screen.dart';
 import 'package:flora/screens/sign_in/sign_in_screen.dart';
 import 'package:flora/screens/sign_up/sign_up_screen.dart';
 import 'package:flora/screens/splash/splash_screen.dart';
+import 'package:flora/screens/user_profile/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -44,4 +45,6 @@ final Map<String, WidgetBuilder> routes = {
   FavoriteScreen.routeName: (context) => const FavoriteScreen(),
 
   CartScreen.routeName: (context) => const CartScreen(),
+
+  UserProfile.routeName: (context) => const UserProfile(),
 };
