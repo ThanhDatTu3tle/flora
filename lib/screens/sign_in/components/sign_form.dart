@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flora/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flora/screens/home/home_screen.dart';
 import 'package:flora/screens/sign_up/sign_up_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/default_button.dart';
@@ -8,6 +10,25 @@ import '../../../components/form_error_email.dart';
 import '../../../components/form_error_password.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
+
+class AuthService {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<User?> signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return result.user;
+    } catch (error) {
+      if (kDebugMode) {
+        print("Đăng nhập thất bại: $error");
+      }
+      return null;
+    }
+  }
+}
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);
@@ -172,13 +193,39 @@ class _SignFormState extends State<SignForm> {
             ),
             DefaultButton(
               text: "Đăng nhập",
-              press: () {
+              press: () async {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState?.save();
-                  Navigator.pushNamed(context, HomeScreen.routeName);
+
+                  AuthService authService = AuthService();
+                  User? user = await authService.signInWithEmailAndPassword(email, password);
+
+                  // Kiểm tra xem email đã nhập có nằm trong danh sách các email đã đăng ký hay không
+                  if (user != null) {
+                    Navigator.pushNamed(context, HomeScreen.routeName);
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Lỗi đăng nhập"),
+                          content: Text("Email hoặc mật khẩu không chính xác."),
+                          actions: [
+                            TextButton(
+                              child: Text("Đóng"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
                 }
               },
             ),
+
             SizedBox(
               height: getProportionateScreenHeight(15),
             ),

@@ -17,6 +17,7 @@ const kAnimationDuration = Duration(milliseconds: 200);
 // Form Error
 final RegExp emailValidatorRegExp =
 RegExp(r"^[a-zA-Z\d.]+@[a-zA-Z\d]+\.[a-zA-Z]+");
+const String api = "http://169.254.185.208:5000";
 const String kEmailNullError = "Vui lòng nhập email";
 const String kInvalidEmailError = "Vui lòng nhập vào email hợp lệ";
 const String kPassNullError = "Vui lòng nhập mật khẩu";

@@ -3,6 +3,10 @@ import 'package:flora/screens/sign_in/components/social_card.dart';
 import 'package:flora/size_config.dart';
 import 'package:flutter/material.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flora/routes.dart';
 import 'package:flora/screens/splash/splash_screen.dart';
 import 'package:flora/theme.dart';
@@ -7,7 +8,10 @@ import 'package:provider/provider.dart';
 import 'components/cart_provider.dart';
 import 'components/favorite_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(
     MultiProvider(
       providers: [

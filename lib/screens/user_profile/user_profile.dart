@@ -10,7 +10,6 @@ class UserProfile extends StatefulWidget {
 
   static const routeName = '/profile';
 
-
   @override
   State<UserProfile> createState() => _UserProfileState();
 }

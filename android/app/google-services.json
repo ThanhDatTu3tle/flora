@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "978675561442",
+    "project_id": "flora-auth",
+    "storage_bucket": "flora-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978675561442:android:d595515df1dfe5cfe67fbb",
+        "android_client_info": {
+          "package_name": "com.flora.flora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978675561442-0no2722jc2s1vgq2m16cvmi73lvtp6dv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfb8hjzcWZmhA7G7gT0W8muZ6bWeQJM2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978675561442-0no2722jc2s1vgq2m16cvmi73lvtp6dv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
